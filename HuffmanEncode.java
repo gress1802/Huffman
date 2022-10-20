@@ -19,7 +19,8 @@ public class HuffmanEncode {
         try{
             FileReader fr = new FileReader(in);
             br = new BufferedReader(fr);
-            PriorityQueue<Character> queue = createPriorityQueue(br);
+            BinaryHeap builder = new BinaryHeap(128);
+
 
 
         }catch(FileNotFoundException e){
@@ -27,7 +28,7 @@ public class HuffmanEncode {
         }
     }
 
-    public PriorityQueue<Character> createPriorityQueue(BufferedReader br){
+    public buildParallelArrays(BufferedReader br, BinaryHeap builder){
         
     }
 
