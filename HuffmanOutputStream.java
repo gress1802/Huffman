@@ -3,11 +3,9 @@ public class HuffmanOutputStream {
     
     
     private DataOutputStream d; 
-    public HuffmanOutputStream(String filename, String tree, int totalChars) { 
+    public HuffmanOutputStream(String filename) { 
         try { 
             d = new DataOutputStream(new FileOutputStream(filename)); 
-            d.writeUTF(tree); 
-            d.writeInt(totalChars); 
         
         } 
         catch (IOException e) { 
@@ -19,23 +17,23 @@ public class HuffmanOutputStream {
         //You need to fill a byte with bits and after every 8 calls to writeBit 
         //you must write the byte to the file
         try { 
-
+            d.writeByte(bit);
         } 
         
         catch (IOException e) { 
-
+            System.out.println("Error");
         }   
     }
 
     public void close(){ 
         //write final byte (if needed); 
         //close the DataOutputStream
-        try { 
+/*         try { 
 
         } 
         catch (IOException e) { 
-
-        } 
+            System.out.println("Error");
+        } */
     } 
 }
 

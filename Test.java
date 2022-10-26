@@ -3,39 +3,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.PriorityQueue;
+import java.util.Scanner;
 
 public class Test {
    public static void main(String[] args) throws IOException{
-      PriorityQueue<Character> x = new PriorityQueue<Character>();
-      FileReader fr = new FileReader("./test.txt");
-      BufferedReader br = new BufferedReader(fr);
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.read());
-      System.out.println(br.readLine());
+      String x = "010010";
+      byte[] z = x.getBytes("UTF-8");
+      for(int i = 0;i<z.length;i++){
+         System.out.println(z[i]);
+      }
    } 
 }

@@ -11,6 +11,7 @@ public class BinaryHeap {
     public int size;
      
     public BinaryHeap(int s) {
+
         priority = new int[s+1];
         trees = new HuffmanTree[s+1];
         size = 0;
@@ -88,7 +89,7 @@ public class BinaryHeap {
         //PRE !full()
 
         for(int x = 0; x<priority.length; x++){ //searches for the next 0 (empty value) in the array
-            if(priority[x] == 0){
+            if(priority[x] == 0 && t != null){
                 priority[x] = p;
                 trees[x] = t;
                 size++;
