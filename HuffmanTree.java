@@ -107,6 +107,11 @@ public class HuffmanTree {
         at the location of the leaf value’s character code 
         */
         String[] ret = new String[128];
+        if(root.left == null && root.right == null){//case if there is only one node in the tree
+            int d = root.data;
+            ret[d] = "0";
+            return ret;
+        }
         pathsHelper("",root,ret); 
         return ret;
     }
