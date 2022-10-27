@@ -28,18 +28,37 @@ public class HuffmanEncode {
 
             HuffmanTree hufTree = buildHuffman(builder); //This is the huffman tree we will use for encoding/decoding
             br.close();//closing the buffered reader
-    
-            BufferedReader brNew = new BufferedReader(fr); //new BufferedReader so that we can start the encoding process
+            fr.close();
+
+            FileReader frNew = new FileReader(in); //new BufferedReader and FileReader so that we can start the encoding process
+            BufferedReader brNew = new BufferedReader(frNew); 
             String[] paths = hufTree.pathsToLeaves();
 
 
-            HuffmanOutputStream output = new HuffmanOutputStream(out);
+            HuffmanOutputStream output = new HuffmanOutputStream(out, hufTree.toString(),totalChars);
             while(brNew.ready()){
                 int charIndex = brNew.read(); //This is the index we will use to get the correct encoding
                 String sPath = paths[charIndex]; //This is what will be wrote to the binary file
-                byte[] byteArray = sPath.getBytes("UTF-8");
+                String[] arr = sPath.split("");
+                if(arr.length != 8){//if the byte array size is not size 8
+                    byte[] newArray = new byte[8];
+                    for(int i = 0; i<arr.length;i++){
+                        newArray[i] = Byte.parseByte(arr[i]); //this will fill the array with the path and then a padding of 0s at the end if the path is not 8 bytes long
+                    }
+                    for(int i = 0; i<newArray.length;i++){ //this will always go 8 times
+                        output.writeBit(newArray[i]); //writing the bit 
+                    }
+
+
+                }else{
+                    for(int i = 0; i<arr.length;i++){ //This for loop traverses through the array representing the huffman tree path to the char
+                        byte toWrite = Byte.parseByte(arr[i]); //This is the byte that we need to write *This will also always go 8 times*
+                        output.writeBit(toWrite); //writing the bit
+                    }
+                }
                 
             } 
+            br.close();
 
 
         }catch(IOException e){
@@ -106,7 +125,8 @@ public class HuffmanEncode {
     public static void main(String args[]) {
 //        args[0] is the name of the source file 
 //        args[1] is the name of the output file
-        new HuffmanEncode(args[0], args[1]);
+//        new HuffmanEncode(args[0], args[1]);
+        new HuffmanEncode("./test.txt", "./output.bin");
         //do not change anything here
 
 /*         try{

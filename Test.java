@@ -7,10 +7,9 @@ import java.util.Scanner;
 
 public class Test {
    public static void main(String[] args) throws IOException{
-      String x = "010010";
-      byte[] z = x.getBytes("UTF-8");
-      for(int i = 0;i<z.length;i++){
-         System.out.println(z[i]);
-      }
+      byte x = 1<<0; //1
+      byte y = 0<<0; //0
+      System.out.println(x);
+      System.out.println(y);
    } 
 }
