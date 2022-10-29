@@ -15,7 +15,10 @@ public class HuffmanDecode {
             int totalChars = input.getTotalChars();
             FileWriter fw = new FileWriter(out, true);
             BufferedWriter bw = new BufferedWriter(fw);
-            while(countChars < totalChars){ 
+            while(countChars < totalChars){
+                if(countChars == totalChars - 1){ //EOF Case
+                    break;
+                }
                 if(input.hufTree.atLeaf()){//In this case we write the leaf char and start over
                     char toWrite = input.hufTree.current();
                     bw.write(toWrite);

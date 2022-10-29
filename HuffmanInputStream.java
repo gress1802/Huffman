@@ -90,12 +90,11 @@ public class HuffmanInputStream {
         try {
             if(counter != 0){ //EOF case
                 while(!hufTree.atLeaf()){
-                    if(arrayOfBits[counter] == 1){
+                    int x = readBit();
+                    if(x == 1){
                         hufTree.moveToRight();
-                        counter++;
                     }else{
                         hufTree.moveToLeft();
-                        counter++;
                     }
                 }
                 //huftree is now at a leaf

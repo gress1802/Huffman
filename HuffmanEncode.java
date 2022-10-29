@@ -36,18 +36,17 @@ public class HuffmanEncode {
 
 
             HuffmanOutputStream output = new HuffmanOutputStream(out, hufTree.toString(),totalChars);
-
             while(brNew.ready()){
                 int charIndex = brNew.read(); //This is the index we will use to get the correct encoding
                 String sPath = paths[charIndex]; //This is what will be wrote to the binary file
                 char[] arr = sPath.toCharArray();
-                System.out.print((char)charIndex+": ");
-                
+
                 for(int i = 0; i<arr.length; i++){
                     output.writeBit(arr[i]);
                 }
-                System.out.println();
         
+                 
+                
             } 
             br.close();
             output.close();
