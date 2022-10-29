@@ -22,20 +22,17 @@ public class HuffmanOutputStream {
         //You need to fill a byte with bits and after every 8 calls to writeBit 
         //you must write the byte to the file
         try{
-            System.out.println(bit);
-            if(bit == 0){
-                amtBytes = (amtBytes<<2) + 0;//This is the case where our array is null AKA (char)0
-            }else{
-                int x = bit - '0'; // gives us either 0 or 1
-                amtBytes = (amtBytes<<2) + x; // this shifts amtBytes to the left
-            }
-            count++; //increment
+            System.out.print(bit);
+            amtBytes = (amtBytes<<1) + (bit-'0'); // this shifts amtBytes to the left
 
-            if(count == 8){ //8 is a full byte
+            if(count == 7){ //7 is a full byte *****
                 count = 0; //reset the counter
                 d.writeByte(amtBytes);
+                
                 amtBytes = 0; //reset amtBytes
                 
+            }else{
+                count++;
             }
         } 
         
@@ -48,8 +45,8 @@ public class HuffmanOutputStream {
         //write final byte (if needed); 
         //close the DataOutputStream
          try { 
-            if(write != 0){
-                d.writeByte(write);
+            if(count != 0){
+                d.writeByte(amtBytes);
             }
             d.close();
         } 

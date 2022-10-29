@@ -36,28 +36,18 @@ public class HuffmanEncode {
 
 
             HuffmanOutputStream output = new HuffmanOutputStream(out, hufTree.toString(),totalChars);
+
             while(brNew.ready()){
                 int charIndex = brNew.read(); //This is the index we will use to get the correct encoding
                 String sPath = paths[charIndex]; //This is what will be wrote to the binary file
                 char[] arr = sPath.toCharArray();
-        
-                if(arr.length != 8){//if the byte array size is not size 8
-                    char[] newArray = new char[8];
-                    for(int i = 0; i<arr.length;i++){
-                        newArray[i] = arr[i]; //this will fill the array with the path and then a padding of 0s at the end if the path is not 8 bytes long
-                    }
-                    for(int i = 0; i<newArray.length;i++){ //this will always go 8 times
-                        output.writeBit(newArray[i]); //writing the bit 
-                    }
-
-
-                }else{
-                    for(int i = 0; i<arr.length;i++){ //This for loop traverses through the array representing the huffman tree path to the char
-                        char toWrite = arr[i]; //This is the byte that we need to write *This will also always go 8 times*
-                        output.writeBit(toWrite); //writing the bit
-                    }
-                }
+                System.out.print((char)charIndex+": ");
                 
+                for(int i = 0; i<arr.length; i++){
+                    output.writeBit(arr[i]);
+                }
+                System.out.println();
+        
             } 
             br.close();
             output.close();
