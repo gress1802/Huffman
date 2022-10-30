@@ -22,7 +22,6 @@ public class HuffmanOutputStream {
         //You need to fill a byte with bits and after every 8 calls to writeBit 
         //you must write the byte to the file
         try{
-            System.out.print(bit);
             amtBytes = (amtBytes<<1) + (bit-'0'); // this shifts amtBytes to the left
 
             if(count == 7){ //7 is a full byte *****
@@ -45,7 +44,6 @@ public class HuffmanOutputStream {
         //write final byte (if needed); 
         //close the DataOutputStream
          try {
-            System.out.println(count); 
             if(count != 0){ //Finishing off the last byte 
                 while(count != 8){
                     amtBytes = (amtBytes<<1) + 0;//this will shift the final bits all the way to the left

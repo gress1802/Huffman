@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 public class HuffmanEncode {
     
     public String fileIn;
@@ -47,7 +46,8 @@ public class HuffmanEncode {
         
                  
                 
-            } 
+            }
+            brNew.close(); 
             br.close();
             output.close();
 
@@ -106,32 +106,8 @@ public class HuffmanEncode {
     public static void main(String args[]) {
 //        args[0] is the name of the source file 
 //        args[1] is the name of the output file
-//        new HuffmanEncode(args[0], args[1]);
-        new HuffmanEncode("./test.txt", "./output.bin");
+        new HuffmanEncode(args[0], args[1]);
         //do not change anything here
 
-/*         try{
-            FileReader fr = new FileReader("./test.txt");
-            BufferedReader br = new BufferedReader(fr);
-            BinaryHeap builder = new BinaryHeap(128);
-            //Creation of another set of parallel arrays
-            int[] priority = new int[128];
-            HuffmanTree[] tree = new HuffmanTree[128];
-            
-            addHeap(br, priority, tree, builder); //This is a method that adds the priorities and trees to the heap
-
-            HuffmanTree hufTree = buildHuffman(builder);
-
-            System.out.println(hufTree);
-
-            for(int x = 0; x<priority.length;x++){
-                System.out.println(priority[x]);
-            } 
-
-
-
-        }catch(FileNotFoundException e){
-            System.out.println("File not found");
-        } */
     }
 }

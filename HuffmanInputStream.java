@@ -2,8 +2,6 @@ import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Currency;
 
 public class HuffmanInputStream {
 
@@ -40,7 +38,7 @@ public class HuffmanInputStream {
         int ret = 0;
         try {
             if(counter == 0){//the start of a new byte
-                currentByte = d.readUnsignedByte(); System.out.println(currentByte);
+                currentByte = d.readUnsignedByte();
                 //Create an array of the bits in this byte
                 arrayOfBits = getBitArray(currentByte);
             }
