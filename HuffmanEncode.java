@@ -57,16 +57,6 @@ public class HuffmanEncode {
         }
     }
 
-    public void writeToFile(BufferedReader brNew, String[] paths, String out){
-        try{
-            while(brNew.ready()){
-                String filename = out;
-                char toWrite = (char)brNew.read();
-            }
-        }catch(IOException e){ 
-
-        }
-    }
 
     
     public static HuffmanTree buildHuffman(BinaryHeap builder){ //This is a method that build a huffman tree from a binary heap

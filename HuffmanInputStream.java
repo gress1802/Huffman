@@ -40,14 +40,9 @@ public class HuffmanInputStream {
         int ret = 0;
         try {
             if(counter == 0){//the start of a new byte
-                if(d.available() > 0){//ensuring that the next byte can be read
-                    currentByte = d.readUnsignedByte(); System.out.println(currentByte);
-                    //Create an array of the bits in this byte
-                    arrayOfBits = getBitArray(currentByte);
-                }else{
-                    //do nothing the file has finished
-                    System.out.println("trying to read something that isn't there");
-                }
+                currentByte = d.readUnsignedByte(); System.out.println(currentByte);
+                //Create an array of the bits in this byte
+                arrayOfBits = getBitArray(currentByte);
             }
 
             ret = arrayOfBits[counter]; //use counter to return the correct bit
@@ -88,23 +83,11 @@ public class HuffmanInputStream {
     public void close(BufferedWriter bw) {//parameter is to be able to write the last char correctly to the file 
         //close the DataInputStream
         try {
-            if(counter != 0){ //EOF case
-                while(!hufTree.atLeaf()){
-                    int x = readBit();
-                    if(x == 1){
-                        hufTree.moveToRight();
-                    }else{
-                        hufTree.moveToLeft();
-                    }
-                }
-                //huftree is now at a leaf
-                char toWrite = hufTree.current();
-                bw.write(toWrite);
-            }
             d.close();
         } catch (IOException e) {
+        }
 
-        } 
+        
     } 
 
 }

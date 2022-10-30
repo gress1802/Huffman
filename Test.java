@@ -11,10 +11,10 @@ import java.util.Scanner;
 
 public class Test {
    public static void main(String[] args) throws IOException{
-      int[] x = getBitArray(224);
-      for(int i = 0; i<x.length; i++){
-         System.out.println(x[i]);
-      }
+      int[] x = getBitArray(3);
+//      for(int i = 0; i<x.length; i++){
+         System.out.println(x[7]);
+//      }
    }
 
    public static int[] getBitArray(int number){

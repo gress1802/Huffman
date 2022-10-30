@@ -44,8 +44,13 @@ public class HuffmanOutputStream {
     public void close(){ 
         //write final byte (if needed); 
         //close the DataOutputStream
-         try { 
-            if(count != 0){
+         try {
+            System.out.println(count); 
+            if(count != 0){ //Finishing off the last byte 
+                while(count != 8){
+                    amtBytes = (amtBytes<<1) + 0;//this will shift the final bits all the way to the left
+                    count++;
+                }
                 d.writeByte(amtBytes);
             }
             d.close();

@@ -16,9 +16,6 @@ public class HuffmanDecode {
             FileWriter fw = new FileWriter(out, true);
             BufferedWriter bw = new BufferedWriter(fw);
             while(countChars < totalChars){
-                if(countChars == totalChars - 1){ //EOF Case
-                    break;
-                }
                 if(input.hufTree.atLeaf()){//In this case we write the leaf char and start over
                     char toWrite = input.hufTree.current();
                     bw.write(toWrite);
@@ -27,6 +24,10 @@ public class HuffmanDecode {
 
                 }else{ //We keep reading bits and moving to the left or right until we hit a leaf
                     int inp = input.readBit();
+
+                    if(countChars == totalChars - 1){
+                        System.out.println("Joe");
+                    }
 
                     if(inp == 0){//Move to the left
                         input.hufTree.moveToLeft();
