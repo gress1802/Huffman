@@ -61,7 +61,6 @@ public class HuffmanEncode {
     
     public static HuffmanTree buildHuffman(BinaryHeap builder){ //This is a method that build a huffman tree from a binary heap
         while(builder.size != 1){
-
             HuffmanTree left = builder.getMinTree();
             int leftPriority = builder.getMinPriority();
 
@@ -89,9 +88,10 @@ public class HuffmanEncode {
                 priority[index]++;
                 totalChars = totalChars + 1;
             }
-
             for(int x = 0; x<priority.length;x++){ //This loop adds the parallel arrays to the binary heap
-                builder.insert(priority[x],tree[x]);
+                if(priority[x] != 0){ //this is making sure we arent just adding a bunch of 0s
+                    builder.insert(priority[x],tree[x]);
+                }
             }
         }catch(IOException e){
             System.out.println("Error");
